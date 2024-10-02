@@ -1,0 +1,13 @@
+package com.project.doctor_fish_back;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DoctorFishBackApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DoctorFishBackApplication.class, args);
+    }
+
+}
