@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.doctor_fish_back.repository.UserMapper">
+
+    <select id="findById" resultType="com.project.doctor_fish_back.entity.User">
+        select
+            id,
+            email,
+            name,
+            password,
+            phone_number
+        from
+            user_tb
+        where
+            id = #{id}
+    </select>
+
+    <select id="findByEmail" resultType="com.project.doctor_fish_back.entity.User">
+        select
+            id,
+            email,
+            name,
+            password,
+            phone_number
+        from
+            user_tb
+        where
+            email = #{email}
+    </select>
+
+</mapper>
