@@ -1,4 +1,4 @@
-package com.project.doctor_fish_back.dto.request;
+package com.project.doctor_fish_back.dto.request.auth;
 
 import lombok.Data;
 

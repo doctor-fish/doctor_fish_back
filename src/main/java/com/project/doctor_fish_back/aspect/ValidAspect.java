@@ -1,9 +1,10 @@
 package com.project.doctor_fish_back.aspect;
 
-import com.project.doctor_fish_back.dto.request.ReqSignupDto;
+import com.project.doctor_fish_back.dto.request.auth.ReqSignupDto;
 import com.project.doctor_fish_back.exception.ValidException;
 import com.project.doctor_fish_back.service.UserService;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class ValidAspect {
     @Pointcut("@annotation(com.project.doctor_fish_back.aspect.annotation.ValidAop)")
     private void pointCut() {}
 
+    @Around("pointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
         BeanPropertyBindingResult bindingResult = null;
