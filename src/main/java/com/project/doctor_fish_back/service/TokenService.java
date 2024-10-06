@@ -19,6 +19,8 @@ public class TokenService {
 
     public Boolean isValidAccessToken(String bearerAccessToken) {
         try {
+            System.out.println(bearerAccessToken);
+
             String accessToken = jwtProvider.removeBearer(bearerAccessToken);
             Claims claims = jwtProvider.getClaims(accessToken);
             Long userId = ((Integer) claims.get("userId")).longValue();
