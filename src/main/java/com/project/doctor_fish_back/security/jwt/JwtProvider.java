@@ -34,6 +34,15 @@ public class JwtProvider {
                .compact();
     }
 
+    public String generateEmailValidToken(String email) {
+        Date expireDate = new Date(new Date().getTime() + (1000l * 60 * 5));
+        return Jwts.builder()
+                .claim("email", email)
+                .expiration(expireDate)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     public String removeBearer(String bearerToken) {
         if(bearerToken == null) {
             throw new RuntimeException();

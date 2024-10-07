@@ -12,6 +12,7 @@
         <result property="name" column="name" />
         <result property="password" column="password" />
         <result property="phoneNumber" column="phone_number" />
+        <result property="emailValid" column="email_valid" />
         <collection property="userRoles" javaType="java.util.Set" resultMap="userRolesResultMap" />
     </resultMap>
 
@@ -29,8 +30,16 @@
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into user_tb
-        values(default, #{email}, #{name}, #{password}, #{phoneNumber})
+        values(default, #{email}, #{name}, #{password}, #{phoneNumber}, default)
     </insert>
+
+    <update id="modifyEmailValidByEmail">
+        update user_tb
+        set
+            email_valid = 1
+        where
+            email = #{email}
+    </update>
 
     <select id="findById" resultMap="userResultMap">
         select
@@ -39,6 +48,7 @@
             u.name,
             u.password,
             u.phone_number,
+            u.email_valid,
             ur.id as user_roles_id,
             ur.user_id as ur_user_id,
             ur.role_id as ur_role_id,
@@ -59,6 +69,7 @@
             u.name,
             u.password,
             u.phone_number,
+            u.email_valid,
             ur.id as user_roles_id,
             ur.user_id as ur_user_id,
             ur.role_id as ur_role_id,
